@@ -3,7 +3,7 @@
 #include <string.h>
 #include "contact.h"
 #include "file.h"
-#include "populate.h"
+//#include "populate.h"
 
 void listContacts(AddressBook *addressBook, int sortCriteria) 
 {
@@ -26,7 +26,12 @@ void saveAndExit(AddressBook *addressBook) {
 
 void createContact(AddressBook *addressBook)
 {
-	/* Define the logic to create a Contacts */
+	printf("Creating a new contact...");
+    printf("Enter the name of the contact.");
+    scanf("%s",addressBook->contacts[addressBook->contactCount].name);
+    printf("%s",addressBook->contacts[addressBook->contactCount].name);
+    addressBook->contactCount++;
+    
     
 }
 

@@ -32,7 +32,7 @@ int main() {
                 deleteContact(&addressBook);
                 break;
             case 5:          
-                listContacts(&addressBook, sortChoice);
+          //      listContacts(&addressBook);
                 break;
             case 6:
                 printf("Saving...\n");
