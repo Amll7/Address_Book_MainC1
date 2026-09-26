@@ -73,8 +73,7 @@ int validatename(AddressBook *addressBook)
     int length=strlen(addressBook->contacts[addressBook->contactCount].name);
     if(length<2)
     {
-        printf("Entered name is Invalid.\n");
-        printf("Please Enter a name with minimum 2 characters.\n");
+        printf("Invalid name: The name must contain at least 2 characters.\n");
         return 0;
     }
     for(int i=0;i<length;i++)
@@ -82,8 +81,7 @@ int validatename(AddressBook *addressBook)
     if((!isalnum(addressBook->contacts[addressBook->contactCount].name[i])) &&
                  addressBook->contacts[addressBook->contactCount].name[i]!=' ')
     {
-        printf("Entered name is Invalid.\n");
-        printf("Name should only contain Alphabets or numbers!!.\n");
+        printf("Invalid name: The name must contain only alphabets, numbers and spaces.\n");
         return 0;
     }
     }
@@ -95,13 +93,13 @@ int validatephone(AddressBook *addressBook)
   int length=strlen(addressBook->contacts[addressBook->contactCount].phone);
   if(!(length==10))
   {
-    printf("\nThe phone number should contain 10 Digits!!\n");
+    printf("Invalid phone number: The phone number must contain exactly 10 digits.\n");
     return 0;
   }
   else if (!(addressBook->contacts[addressBook->contactCount].phone[0]>='6' && 
            addressBook->contacts[addressBook->contactCount].phone[0]<='9'))
   {
-     printf("\nThe phone number should start with number greater than 6!!\n");
+     printf("Invalid phone number: The phone number must start with a digit from 6 to 9.\n");
      return 0;
   }
   for(int i=0;i<length;i++)
@@ -109,7 +107,7 @@ int validatephone(AddressBook *addressBook)
     if(!(addressBook->contacts[addressBook->contactCount].phone[i]>='0' &&
        addressBook->contacts[addressBook->contactCount].phone[i]<='9'))
        {
-        printf("\nThe phone number should contain only digits!!\n");
+        printf("Invalid phone number: The phone number must contain only digits.\n");
         return 0;
        }
   }
@@ -120,5 +118,91 @@ int validatephone(AddressBook *addressBook)
 }
 int validateemail(AddressBook *addressBook)
 {
-    
+
+ char *com=strstr(addressBook->contacts[addressBook->contactCount].email,".com");
+ char *at=strchr(addressBook->contacts[addressBook->contactCount].email,'@');
+ char *dot=strchr(addressBook->contacts[addressBook->contactCount].email,'.');
+ int length=strlen(addressBook->contacts[addressBook->contactCount].email);
+ int atcount=0;
+ 
+ if(addressBook->contacts[addressBook->contactCount].email[0]=='@')
+ {
+   printf("Invalid email: The email address cannot start with '@'.\n");
+   return 0;
+ }
+ if(addressBook->contacts[addressBook->contactCount].email[0]=='.')
+ {
+   printf("Invalid email: The email address cannot start with '.'.\n");
+   return 0;
+ }
+
+
+ for(int i=0;i<length;i++)
+ {
+   if(addressBook->contacts[addressBook->contactCount].email[i]=='@')
+   {
+    atcount++;
+   }
+   if(atcount==2)
+   {
+    printf("Invalid email: The email address must contain only one '@'.\n");
+    return 0;
+   }
+ }
+
+
+
+ for(int i=0;i<length;i++)
+ {
+ if(addressBook->contacts[addressBook->contactCount].email[i]>='A' && 
+    addressBook->contacts[addressBook->contactCount].email[i]<='Z' )
+ {
+   printf("Invalid email: Uppercase letters are not allowed.\n");
+   return 0;
+ }
+}
+
+
+
+ if(com != NULL)
+ {
+    if(*(com+4)!='\0')
+    {
+    printf("Invalid email: '.com' must appear at the end of the email address.\n");
+    return 0;
+    }
+ }
+ else
+ {
+    printf("Invalid email: The email address must contain '.com'.\n");
+    return 0;
+ }
+
+
+ if(at!=NULL) 
+ {
+    if((!(*(at+1)>='a' && *(at+1)<='z')))
+    {
+    printf("Invalid email: The domain name must start with a lowercase letter.\n");
+    return 0;
+    }
+ }
+ else
+ {
+   printf("Invalid email: The email address must contain '@'.\n");
+   return 0;
+ }
+ 
+
+ if(dot!=NULL)
+ {
+    if(*(dot+1)=='.'||*(dot+1)=='@')
+    {
+     printf("Invalid email: A dot cannot be immediately followed by another dot or '@'.\n");
+    }
+ }
+
+
+ 
+ return 1;
 }
