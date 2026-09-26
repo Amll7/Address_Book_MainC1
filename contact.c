@@ -26,10 +26,10 @@ void saveAndExit(AddressBook *addressBook) {
 
 void createContact(AddressBook *addressBook)
 {
-	printf("Creating a new contact...");
-    printf("Enter the name of the contact.");
+	printf("Creating a new contact...\n");
+    printf("Enter the name of the contact: ");
     scanf("%s",addressBook->contacts[addressBook->contactCount].name);
-    printf("%s",addressBook->contacts[addressBook->contactCount].name);
+    validatename(addressBook);
     addressBook->contactCount++;
     
     
@@ -50,4 +50,8 @@ void deleteContact(AddressBook *addressBook)
 {
 	/* Define the logic for deletecontact */
    
+}
+void validatename(AddressBook *addressBook)
+{
+    printf("%s",addressBook->contacts[addressBook->contactCount].name);
 }
