@@ -6,11 +6,6 @@
 #include <ctype.h>
 //#include "populate.h"
 
-void listContacts(AddressBook *addressBook, int sortCriteria) 
-{
-    // Sort contacts based on the choosen criteria
-    
-}
 
 void initialize(AddressBook *addressBook) {
     addressBook->contactCount = 0;
@@ -168,7 +163,7 @@ int deleteContact(AddressBook *addressBook,int index[])
     }
     addressBook->contactCount--;
     printf("Contact Deleted succesfully...\n\n");
-
+    return 0;
    
 }
 
@@ -399,4 +394,90 @@ int searchbyemail(AddressBook *addressBook,int index[])
     }
     return j;
     
+}
+void listContacts(AddressBook *addressBook, int sortCriteria)
+{
+    char check[50];
+    Contact temp;
+    int i,j;
+    if(sortCriteria==1)
+    {
+        printf("Enter the name: ");
+        scanf(" %[^\n]",check);
+        
+        for(i=0;i<addressBook->contactCount-1;i++)
+        {
+            for(j = 0; j < addressBook->contactCount - i - 1; j++)
+            {
+                if(strcmp(addressBook->contacts[j].name,addressBook->contacts[j+1].name)>0)
+                {
+                    temp=addressBook->contacts[j];
+                    addressBook->contacts[j]=addressBook->contacts[j+1];
+                    addressBook->contacts[j+1]=temp;
+                }
+            }
+        }
+        for(i=0;i<addressBook->contactCount;i++)
+        {
+         printf("%d. %s\n",i+1,addressBook->contacts[i].name);
+        }
+        
+    }
+    else if(sortCriteria==2)
+    {
+
+        printf("Enter the phone number: ");
+        scanf(" %s",check);
+        
+        for(i=0;i<addressBook->contactCount-1;i++)
+        {
+            for(j = 0; j < addressBook->contactCount - i - 1; j++)
+            {
+                if(strcmp(addressBook->contacts[j].name,addressBook->contacts[j+1].name)>0)
+                {
+                    temp=addressBook->contacts[j];
+                    addressBook->contacts[j]=addressBook->contacts[j+1];
+                    addressBook->contacts[j+1]=temp;
+                }
+            }
+        }
+        for(i=0;i<addressBook->contactCount;i++)
+        {
+         printf("%d. %s\n",i+1,addressBook->contacts[i].name);
+        }
+
+
+    }
+
+
+     else if(sortCriteria==2)
+    {
+
+        printf("Enter the Email: ");
+        scanf(" %s",check);
+        
+        for(i=0;i<addressBook->contactCount-1;i++)
+        {
+            for(j = 0; j < addressBook->contactCount - i - 1; j++)
+            {
+                if(strcmp(addressBook->contacts[j].name,addressBook->contacts[j+1].name)>0)
+                {
+                    temp=addressBook->contacts[j];
+                    addressBook->contacts[j]=addressBook->contacts[j+1];
+                    addressBook->contacts[j+1]=temp;
+                }
+            }
+        }
+        for(i=0;i<addressBook->contactCount;i++)
+        {
+         printf("%d. %s\n",i+1,addressBook->contacts[i].name);
+        }
+
+
+    }
+    else
+    {
+        printf("Invalid input!!\n\n");
+    }
+
 }

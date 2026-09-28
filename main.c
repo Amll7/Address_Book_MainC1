@@ -2,7 +2,7 @@
 #include "contact.h"
 
 int main() {
-    int choice;
+    int choice,criteria;
     int index[100]={0};
     AddressBook addressBook;
     initialize(&addressBook); // Initialize the address book
@@ -32,8 +32,15 @@ int main() {
             case 4:
                 deleteContact(&addressBook,index);
                 break;
-            case 5:          
-          //      listContacts(&addressBook);
+            case 5:
+                printf("\n========== LIST CONTACTS ==========\n");
+                printf("Enter the criteria to sort the contacts:\n");
+                printf("1. Sort by Name\n");
+                printf("2. Sort by Phone Number\n");
+                printf("3. Sort by Email\n");
+                printf("Enter your choice: ");
+                scanf("%d",&criteria);      
+                listContacts(&addressBook,criteria);
                 break;
             case 6:
                 printf("Saving...\n");
