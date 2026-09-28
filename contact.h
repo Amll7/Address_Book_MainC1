@@ -15,14 +15,18 @@ typedef struct {
 } AddressBook;
 
 void createContact(AddressBook *addressBook);
-void searchContact(AddressBook *addressBook);
-void editContact(AddressBook *addressBook);
-void deleteContact(AddressBook *addressBook);
+int searchContact(AddressBook *addressBook,int index[]);
+int editContact(AddressBook *addressBook,int index[]);
+int deleteContact(AddressBook *addressBook,int index[]);
 void listContacts(AddressBook *addressBook, int sortCriteria);
 void initialize(AddressBook *addressBook);
 void saveContactsToFile(AddressBook *AddressBook);
-int validatename(AddressBook *addressBook);
-int validatephone(AddressBook *addressBook);
-int validateemail(AddressBook *addressBook);
+void display(AddressBook *addressBook,int index[],int i);
+int validatename(AddressBook *addressBook,int count);
+int validatephone(AddressBook *addressBook,int count);
+int validateemail(AddressBook *addressBook,int count);
+int searchbyname(AddressBook *addressBook,int index[]);
+int searchbyphone(AddressBook *addressBook,int index[]);
+int searchbyemail(AddressBook *addressBook,int index[]);
 
 #endif

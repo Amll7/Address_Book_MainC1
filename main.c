@@ -3,6 +3,7 @@
 
 int main() {
     int choice;
+    int index[100]={0};
     AddressBook addressBook;
     initialize(&addressBook); // Initialize the address book
 
@@ -23,13 +24,13 @@ int main() {
                 createContact(&addressBook);
                 break;
             case 2:
-                searchContact(&addressBook);
+                searchContact(&addressBook,index);
                 break;
             case 3:
-                editContact(&addressBook);
+                editContact(&addressBook,index);
                 break;
             case 4:
-                deleteContact(&addressBook);
+                deleteContact(&addressBook,index);
                 break;
             case 5:          
           //      listContacts(&addressBook);
