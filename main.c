@@ -34,7 +34,7 @@ int main() {
                 break;
             case 5:
                 printf("\n========== LIST CONTACTS ==========\n");
-                printf("Enter the criteria to sort the contacts:\n");
+                printf("Enter the criteria to sort the contacts: \n");
                 printf("1. Sort by Name\n");
                 printf("2. Sort by Phone Number\n");
                 printf("3. Sort by Email\n");
@@ -44,7 +44,7 @@ int main() {
                 break;
             case 6:
                 printf("Saving...\n");
-                //saveContactsToFile(&addressBook);
+                saveContactsToFile(&addressBook);
                 break;   
             case 7:
                 printf("Exiting...\n");
