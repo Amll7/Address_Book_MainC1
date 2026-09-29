@@ -25,12 +25,14 @@ void createContact(AddressBook *addressBook)
     
 	printf("Creating a new contact...\n\n");
     int result;
+
     //name
     do{
     printf("Enter the name of the contact: ");
     scanf(" %[^\n]",addressBook->contacts[addressBook->contactCount].name);
     result=validatename(addressBook,addressBook->contactCount);
     }while(result!=1);
+    
 
     //phone number 
     do{
@@ -38,6 +40,7 @@ void createContact(AddressBook *addressBook)
     scanf("%s",addressBook->contacts[addressBook->contactCount].phone);
     result=validatephone(addressBook,addressBook->contactCount);
     }while(result!=1);
+
 
     //email
     do{
@@ -50,6 +53,7 @@ void createContact(AddressBook *addressBook)
 }
 
 
+//fuction to display
 
 void display(AddressBook *addressBook,int index[],int i)
 {
@@ -101,7 +105,7 @@ int editContact(AddressBook *addressBook,int index[])
     int count,result;
     int choice,option;
 	printf("\n=========== EDIT CONTACT ===========\n");
-    printf("Search for the contact you want to delete.\n\n");
+    printf("Search for the contact you want to edit.\n\n");
     count=searchContact(addressBook,index);
     if(count==-1)
     {
@@ -183,7 +187,7 @@ int validatename(AddressBook *addressBook,int count)
     for(int i=0;i<length;i++)
     {
     if((!isalnum(addressBook->contacts[count].name[i])) &&
-                 addressBook->contacts[count].name[i]!=' ')
+                 (addressBook->contacts[count].name[i]!=' '))
     {
         printf("Invalid name: The name must contain only alphabets, numbers and spaces.\n");
         return 0;
@@ -417,11 +421,15 @@ void listContacts(AddressBook *addressBook, int sortCriteria)
                 }
             }
         }
+        printf("------------------------------------------------------------------------- \n");
+        printf("| %-18s | %-20s | %-25s |\n","NAME","PHONE","EMAIL");
         for(i=0;i<addressBook->contactCount;i++)
         {
-         printf("%d. %s\n",i+1,addressBook->contacts[i].name);
+        printf("------------------------------------------------------------------------- \n");
+         printf("| %-18s | %-20s | %-25s |\n",addressBook->contacts[i].name,
+            addressBook->contacts[i].phone,addressBook->contacts[i].email);
         }
-        
+        printf("------------------------------------------------------------------------- \n");
     }
     else if(sortCriteria==2)
     {
