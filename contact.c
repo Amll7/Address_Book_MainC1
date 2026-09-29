@@ -99,6 +99,17 @@ void display(AddressBook *addressBook,int index[],int i)
 
 
 
+/*
+ * Displaying the search contact menu and asking the user to select the search criteria
+ * the user can search  using the name, phone number,or email address.
+ * based on the user choice the search function is called
+ * the search function returns the index of the matching contact
+ * the returned index is passed to the display function to display the contact details
+ * if the user enters an invalid choice, an error message is displayed
+   and the result is set to -1 
+ * finally the function returns the search result because later the search is 
+   used in delete and edit also it is basically useful in those functions */
+
 
 int searchContact(AddressBook *addressBook,int index[]) 
 {
@@ -130,6 +141,26 @@ int searchContact(AddressBook *addressBook,int index[])
    }
    return result;
 }
+
+
+/*
+ * asking the user to search for the contact which they want to edit
+ * the searchContact function is called and it returns the result
+ * if no contact is found the count value is -1 so it  returns 0 and exits
+ * asking the user to select the contact from the search results
+ * then asking the user to select which field they want to edit
+ * based on the choice the field is selected 
+ * the new string(name,phone,email) is taken from the user and passed to validate function
+ * the validate function checks whether the entered value satisfies all the conditions
+ * the do-while loop continues until a valid value is entered
+ * after successful validation the new value is copied into the selected contact 
+ * if an invalid option is entered an error message is displayed 
+
+   why index[choice-1]?
+   because in display fn it displays from 1 but the actual index of array starts
+   from 0 and also that array contains the matched contacts indexs
+ */
+
 
 int editContact(AddressBook *addressBook,int index[])
 {
@@ -194,6 +225,10 @@ int deleteContact(AddressBook *addressBook,int index[])
 	printf("\n========== DELETE CONTACT ==========\n");
     printf("Search for the contact you want to delete.\n\n");
     count=searchContact(addressBook,index);
+    if(count==-1)
+    {
+        return 0;
+    }
     printf("Select the contact you want to delete : ");
     scanf("%d",&choice);
     for(i=index[choice-1];i<addressBook->contactCount-1;i++)
