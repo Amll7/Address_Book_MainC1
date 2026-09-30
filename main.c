@@ -7,6 +7,10 @@ int main() {
     AddressBook addressBook;
     initialize(&addressBook); // Initialize the address book
 
+    printf("\n");
+    printf("───────────────────────────────────────────────\n");
+    printf("                 ADDRESS BOOK                  \n");
+    printf("───────────────────────────────────────────────");
     do {
         printf("\nAddress Book Menu:\n");
         printf("1. Create contact\n");
@@ -16,6 +20,7 @@ int main() {
         printf("5. List all contacts\n");
     	printf("6. Save contacts\n");		
         printf("7. Exit\n");
+        printf("───────────────────────────────────────────────\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         
@@ -33,12 +38,14 @@ int main() {
                 deleteContact(&addressBook,index);
                 break;
             case 5:
-               printf("\n========== LIST CONTACTS ==========\n");
+               printf("\n");
+              printf("              <LIST CONTACT>              \n\n");
                 do{
                 printf("Enter the criteria to sort the contacts: \n");
                 printf("1. Sort by Name\n");
                 printf("2. Sort by Phone Number\n");
                 printf("3. Sort by Email\n");
+                printf("───────────────────────────────────────────────\n");
                 printf("Enter your choice: ");
                 scanf("%d",&criteria);
                 if(criteria<1 || criteria>3)
