@@ -33,13 +33,19 @@ int main() {
                 deleteContact(&addressBook,index);
                 break;
             case 5:
-                printf("\n========== LIST CONTACTS ==========\n");
+               printf("\n========== LIST CONTACTS ==========\n");
+                do{
                 printf("Enter the criteria to sort the contacts: \n");
                 printf("1. Sort by Name\n");
                 printf("2. Sort by Phone Number\n");
                 printf("3. Sort by Email\n");
                 printf("Enter your choice: ");
-                scanf("%d",&criteria);      
+                scanf("%d",&criteria);
+                if(criteria<1 || criteria>3)
+                {
+                    printf("\nINVALID INPUT!! PLEASE ENTER AGAIN.\n\n");
+                }
+                }while(criteria<1 || criteria>3);
                 listContacts(&addressBook,criteria);
                 break;
             case 6:
