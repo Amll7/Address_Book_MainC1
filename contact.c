@@ -35,6 +35,12 @@ void createContact(AddressBook *addressBook)
       if validation is successful, the function returns 1; otherwise, it returns 0
       do-while loops repeatedly ask the user to re-enter each detail until it passes validation */
 
+    if(addressBook->contactCount >= MAX_CONTACTS)
+    {
+    printf("Address book is full.\n");
+    return;
+    }
+
 
     do{
     printf("Enter the name of the contact: ");
@@ -590,7 +596,6 @@ int searchbyphone(AddressBook *addressBook,int index[])
     for(i=0;i<addressBook->contactCount;i++)
     {
         if(strstr(addressBook->contacts[i].phone, check)!=NULL)
-        //if(strcmp(addressBook->contacts[i].phone,check)==0)
         {
             flag=1;
             index[j]=i;
@@ -623,7 +628,6 @@ int searchbyemail(AddressBook *addressBook,int index[])
     for(i=0;i<addressBook->contactCount;i++)
     {
         if(strstr(addressBook->contacts[i].email, check)!=NULL)
-        //if(strcmp(addressBook->contacts[i].email,check)==0)
         {
             flag=1;
             index[j]=i;
@@ -730,10 +734,6 @@ void listContacts(AddressBook *addressBook, int sortCriteria)
         }
         printf("+--------------------+----------------------+---------------------------+ \n");
 
-    }
-    else
-    {
-        printf("Invalid input!!\n\n");
     }
 
 }

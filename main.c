@@ -39,15 +39,20 @@ int main() {
                 break;
             case 5:
                printf("\n");
-              printf("              <LIST CONTACT>              \n\n");
+               printf("              <LIST CONTACT>              \n\n");
                 do{
                 printf("Enter the criteria to sort the contacts: \n");
                 printf("1. Sort by Name\n");
                 printf("2. Sort by Phone Number\n");
                 printf("3. Sort by Email\n");
+                printf("4. Go Back To Main Menu\n");
                 printf("───────────────────────────────────────────────\n");
                 printf("Enter your choice: ");
                 scanf("%d",&criteria);
+                if(criteria==4)
+                {
+                    break;
+                }
                 if(criteria<1 || criteria>3)
                 {
                     printf("\nINVALID INPUT!! PLEASE ENTER AGAIN.\n\n");
