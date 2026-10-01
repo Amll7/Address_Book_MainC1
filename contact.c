@@ -434,6 +434,7 @@ so checking every index of the email that if it is uppercase or not
    printf("Invalid email: Uppercase letters are not allowed.\n\n");
    return 0;
  }
+ 
 }
 
 
@@ -442,11 +443,17 @@ so checking every index of the email that if it is uppercase or not
 
 if(at!=NULL) 
  {
-    if((!(*(at+1)>='a' && *(at+1)<='z')))
+    if((at+1)== com)
     {
-    printf("Invalid email: The domain must contain a letter.\n\n");
-    return 0;
+        printf("Invalid email: The domain name cannot be empty .\n\n");
+        return 0;
     }
+    else if (*(at + 1) =='.')
+    {
+        printf("Invalid email: The domain should not start with '.' .\n\n");
+        return 0;
+    }    
+
  }
  else
  {
